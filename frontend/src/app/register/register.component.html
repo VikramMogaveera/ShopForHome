@@ -1,0 +1,71 @@
+<mat-card class="example-card">
+    <h2 style="text-align: center;">Register</h2>
+    <mat-error *ngIf= 'isError' style="text-align: center;">
+        Already Registered
+    </mat-error>
+    <mat-card-content>
+        <div>
+            {{message}}
+        </div>
+        <form class="my-form" #regform='ngForm'>
+            <mat-form-field class="full-width">
+                <mat-label>Name</mat-label>
+                <input  matInput type="text" placeholder="Name" name="customer_name" [(ngModel)]='customer.customer_name' #customer_name='ngModel' required />
+            </mat-form-field>
+            <mat-error *ngIf="customer_name.touched">
+                <mat-error *ngIf="customer_name.errors && (customer_name.invalid)">
+                    <mat-error>Name required</mat-error>
+                </mat-error>
+            </mat-error>
+            <mat-form-field class="full-width">
+                <mat-label>Age</mat-label>
+                <input  matInput type="number" placeholder="Age" name="age" [(ngModel)]='customer.age' #age='ngModel' required />
+            </mat-form-field>
+            <mat-error *ngIf="age.touched">
+                <mat-error *ngIf="age.errors && (age.invalid)">
+                    <mat-error>Age required</mat-error>
+                </mat-error>
+            </mat-error>
+            <mat-form-field class="full-width">
+                <mat-label>Gender</mat-label>
+                <input  matInput type="text" placeholder="Gender" name="gender" [(ngModel)]='customer.gender' #gender='ngModel' required />
+            </mat-form-field>
+            <mat-error *ngIf="gender.touched">
+                <mat-error *ngIf="gender.errors && (gender.invalid)">
+                    <mat-error>gender required</mat-error>
+                </mat-error>
+            </mat-error>
+            <mat-form-field class="full-width">
+                <mat-label>Mobile Number</mat-label>
+                <input  matInput type="text" placeholder="Mobile Number" name="mob_no" [(ngModel)]='customer.mob_no' #mob_no='ngModel' required />
+            </mat-form-field>
+            <mat-error *ngIf="mob_no.touched">
+                <mat-error *ngIf="mob_no.errors && (mob_no.invalid)">
+                    <mat-error>Mobile Number required</mat-error>
+                </mat-error>
+            </mat-error>
+            <mat-form-field class="full-width">
+                <mat-label>Email</mat-label>
+                <input  matInput type="text" placeholder="Email" name="customer_email" [(ngModel)]='customer.customer_email' #customer_email='ngModel' required />
+            </mat-form-field>
+            <mat-error *ngIf="customer_email.touched">
+                <mat-error *ngIf="customer_email.errors && (customer_email.invalid)">
+                    <mat-error>Email required</mat-error>
+                </mat-error>
+            </mat-error>
+            <mat-form-field class="full-width">
+                <mat-label>Password</mat-label>
+                <input  matInput type="password" placeholder="Password"  name="customer_password" [(ngModel)]='customer.customer_password' #customer_password='ngModel' required />
+            </mat-form-field>
+            <mat-error *ngIf="customer_password.touched">
+                <mat-error *ngIf="customer_password.errors && (customer_password.invalid)">
+                    <mat-error>Password required</mat-error>
+                </mat-error>
+            </mat-error>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [disabled]="regform.form.invalid" (click)='register()'>Register</button>
+      </mat-card-actions>
+  </mat-card>
+

@@ -1,0 +1,17 @@
+.my-form{
+    width: 100%;
+  }
+   
+.full-width {
+    width: 100%;
+}
+.example-card{
+    margin: 150px auto;
+    width: 40%;
+    
+}
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: 0 2px 1px -1px rgba(0,0,0,1), 
+                0 1px 1px 0 rgba(0,0,0,1), 
+                0 1px 3px 0 rgba(0,0,0,1);
+}

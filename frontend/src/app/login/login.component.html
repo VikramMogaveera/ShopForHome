@@ -1,0 +1,21 @@
+<mat-card class="example-card">
+    <h2 style="text-align: center;">Login</h2>
+    <mat-error *ngIf= 'isError' style="text-align: center;">
+        Invalid Credentials
+    </mat-error>
+    <mat-card-content>
+        <form class="my-form" #loginform='ngForm'>
+            <mat-form-field class="full-width">
+                <mat-label>Email</mat-label>
+                <input  matInput type="text" placeholder="Email"  name="customer_email" [(ngModel)]='customer.customer_email' required>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Password</mat-label>
+                <input  matInput type="password" placeholder="Password"  name="customer_password" [(ngModel)]='customer.customer_password' required>
+            </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="login()" color="primary" [disabled]='loginform.form.invalid'>LOGIN</button>
+      </mat-card-actions>
+  </mat-card>

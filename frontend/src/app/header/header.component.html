@@ -1,0 +1,84 @@
+
+<mat-toolbar class="toolbar" fxFlexLayout="row">
+    <mat-toolbar-row>
+        <div class="head" fxFlex *ngIf="isLoggedIn()">
+            <mat-icon class="cart">shopping_cart</mat-icon>
+            <a routerLink='/products' class="cart_user">SHOP FOR HOME</a>
+        </div>
+        <div class="head" fxFlex *ngIf="!isLoggedIn()">
+            <mat-icon class="cart">shopping_cart</mat-icon>
+            <a routerLink='' class="cart_user">SHOP FOR HOME</a>
+        </div>
+            <form #searchForm='ngForm' class="form-inline">
+                <input type="search" class="form-control rounded" placeholder="Search" name="searchname" aria-label="Search"
+                aria-describedby="search-addon" ngModel/>
+                <span>
+                    <button type="submit" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="search(searchForm.value)">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                </span>
+            </form> 
+        
+       
+        <div *ngIf = "isLoggedIn()">
+            <span class="example-spacer"></span>
+            <a routerLink='/products' class="cart_user">Home<mat-icon class="order">home</mat-icon></a>
+            <a routerLink='/cart' class="cart_user">Cart<mat-icon class="order">shopping_cart</mat-icon></a>
+            <button mat-icon-button [matMenuTriggerFor]="dropMenu">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+            <mat-menu #dropMenu="matMenu" yPosition="below" class="drop-down">
+                <ng-container>
+                    <div>
+                        {{getName()}}
+                    </div>
+                    
+                    <mat-divider></mat-divider>
+                    <div>
+                        <a routerLink='/order' class='nav'><mat-icon class="cart">shopping_basket</mat-icon>Orders</a>
+                    </div>
+                    <div>
+                        <a routerLink='/wishlist' class='nav'><mat-icon class="cart">shopping_cart</mat-icon>WishList</a>
+                    </div>
+                    <div>
+                        <a routerLink='/logout' class="nav" (click)='logout()'><span><mat-icon class="cart">logout</mat-icon></span>Logout</a>
+                    </div>  
+                </ng-container>
+            </mat-menu>
+            
+        </div>
+        <div *ngIf = "!isLoggedIn()">
+            <span class="example-spacer"></span>
+            <a routerLink='/login' class="cart_user">Cart<mat-icon class="order">shopping_cart</mat-icon></a>
+            <span><mat-icon class="cart">perm_identity</mat-icon></span>
+            <a routerLink='/login' class='nav'>Login</a>
+            <span><mat-icon class="cart">perm_identity</mat-icon></span>
+            <a routerLink='/register' class="nav">Register</a>
+        </div>  
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+        <div class="container" >
+            <span class="spacer">
+                <button (click)="category(cat.value)" fxHide.xs #cat value="furniture">Furniture</button>
+                <button href="" fxHide.xs>Appliances</button>
+                <button href="" fxHide.xs>Beds</button>
+                <button href="" fxHide.xs>Mattresses</button>
+                <button href="" fxHide.xs>Decor</button>
+                <button href="" fxHide.xs>Lightings</button>
+            </span>
+        </div>
+        <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.xs>
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #dropMenu="matMenu" yPosition="below">
+            <ng-container>
+                <button mat-menu-item >Furniture</button>
+                <button mat-menu-item >Appliances</button>
+                <button mat-menu-item >Beds</button>
+                <button mat-menu-item >Mattresses</button>
+                <button mat-menu-item>Decor</button>
+                <button mat-menu-item>Lightings</button>
+            </ng-container>
+        </mat-menu>
+    </mat-toolbar-row>
+</mat-toolbar>

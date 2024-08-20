@@ -1,0 +1,7 @@
+<h1 style="text-align: center;">Page Not Found</h1>
+<div class="home" *ngIf = '!isLoggedIn()'>
+    <a routerLink='' class="btn btn-primary">Home Page</a>
+</div>
+<div class="home" *ngIf = 'isLoggedIn()'>
+    <a routerLink='/products' class="btn btn-primary">Home Page</a>
+</div>
